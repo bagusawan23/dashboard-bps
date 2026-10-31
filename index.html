@@ -1,0 +1,32 @@
+---
+layout: default
+title: Dashboard
+description: Kumpulan dashboard interaktif berbasis data publik Indonesia.
+---
+<section class="hero">
+  <p class="eyebrow">Data viz · Indonesia</p>
+  <h1>Data publik, jadi cerita yang bisa dijelajahi.</h1>
+  <p class="lede">Dashboard interaktif untuk membaca anggaran dan ekonomi daerah. Klik, bandingkan, dan unduh hasilnya.</p>
+</section>
+
+<section class="cards" aria-label="Daftar dashboard">
+  {% for p in site.data.projects %}
+  <a class="card-link" href="{{ p.url | relative_url }}">
+    <article class="pcard">
+      <div class="pcard-media">
+        {% if p.slug == "apbd" %}{% include apbd-thumb.svg %}{% elsif p.slug == "pdrb" %}{% include pdrb-thumb.svg %}{% endif %}
+        <span class="badge">{{ p.status }}</span>
+      </div>
+      <div class="pcard-body">
+        <h2>{{ p.title }}</h2>
+        <p>{{ p.desc }}</p>
+        <ul class="tags">{% for t in p.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+        <span class="pcard-src">{{ p.source }}</span>
+      </div>
+    </article>
+  </a>
+  {% endfor %}
+  <div class="pcard pcard-empty" aria-hidden="true">
+    <div class="pcard-body"><h2>Dashboard berikutnya</h2><p>Slot ini disiapkan untuk proyek selanjutnya. Tambahkan lewat <code>_data/projects.yml</code>.</p></div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+layout: dashboard
+title: Peta Ekonomi Indonesia
+description: Peta isometrik 3D 38 provinsi menurut PDRB 2025 dan diorama animasi 17 lapangan usaha per provinsi.
+permalink: /dashboards/pdrb/
+css: /assets/css/pdrb.css
+---
+<script type="importmap">{ "imports": { "three": "{{ '/assets/vendor/three/three.module.min.js' | relative_url }}" } }</script>
+<div id="panggung" class="memuat">
+  <canvas id="kanvas" aria-label="Peta isometrik 3D provinsi Indonesia menurut PDRB"></canvas>
+  <div id="label" aria-hidden="true"></div>
+
+  <section id="peta" class="lapisan">
+    <div class="judul">
+      <span class="pill">PDRB 2025 · angka sangat sementara</span>
+      <h1>Peta Ekonomi<br>Indonesia</h1>
+      <p class="sub">Tinggi provinsi = PDRB-nya. Warna = laju pertumbuhan riil atau sektor dominan. Arahkan kursor, klik untuk memilih, klik lagi untuk masuk ke diorama sektornya. Seret untuk memutar.</p>
+      <div class="seg" id="warna" role="group" aria-label="Warna peta"></div>
+      <div class="legenda" id="legenda-peta"></div>
+    </div>
+    <div class="kartu info-nas">
+      <div><span class="kecil">Tahun · harga</span><b>2025 · konstan 2010</b></div>
+      <i class="garis-v"></i>
+      <div><span class="kecil">Pertumbuhan riil PDB</span><b><span id="nas-teks" class="num"></span> <span class="kecil">vs 2024</span></b></div>
+    </div>
+    <div class="kartu top5"><div class="kepala"><h2>Top 5 provinsi</h2><span class="kecil">PDRB · tumbuh riil</span></div><div id="top5"></div></div>
+    <div class="kartu terpilih" id="terpilih"></div>
+    <p class="sumber">Sumber: BPS (PDRB provinsi dan PDB nasional, harga konstan 2010). Batas provinsi: denyherianto/indonesia-geojson-topojson-maps-with-38-provinces (CC BY 4.0), disederhanakan.</p>
+  </section>
+
+  <section id="dio" class="lapisan" hidden>
+    <div class="ui kiri-atas">
+      <button class="btn" id="tbl-peta" type="button">← Peta</button>
+      <span class="pill">Diorama · 2025 · harga konstan 2010</span>
+      <h1 id="dio-nama"></h1>
+      <div class="chips" id="dio-chips"></div>
+    </div>
+    <div class="ui tengah-atas">
+      <div class="seg" id="lensa" role="tablist" aria-label="Lensa"></div>
+      <p class="jelas" id="jelas"></p>
+      <div class="legenda" id="legenda"></div>
+    </div>
+    <div class="kartu ui sektor-kartu" id="sektor-kartu" hidden></div>
+    <div class="kartu ui daftar">
+      <div class="kepala"><h2>17 lapangan usaha</h2><span class="kecil" id="kolom"></span></div>
+      <div id="daftar"></div>
+    </div>
+  </section>
+
+  <div id="balon" class="balon" hidden></div>
+  <p id="pesan" class="kecil pesan">Memuat data…</p>
+</div>
+<script>window.PDRB_CONFIG = { dataUrl: "{{ '/assets/data/pdrb.json' | relative_url }}" };</script>
+<script type="module" src="{{ '/assets/js/pdrb/main.js' | relative_url }}"></script>

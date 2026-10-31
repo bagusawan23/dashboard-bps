@@ -1,0 +1,33 @@
+title: Portofolio Bagus
+tagline: Dashboard data & visualisasi
+description: Kumpulan dashboard interaktif berbasis data publik Indonesia.
+lang: id
+
+# Ganti sesuai repo GitHub Pages kamu.
+#   User site  (username.github.io)      -> url: https://username.github.io , baseurl: ""
+#   Project site (username.github.io/xx) -> url: https://username.github.io , baseurl: "/xx"
+url: "https://bagusawan23.github.io"
+baseurl: "/dashboard-bps"
+
+github_username: "bagusawan23"
+
+# Sumber data dashboard APBD.
+# Kosong = pakai data demo sintetis (assets/data/apbd-demo.json) dan dashboard
+# menampilkan label "DATA DEMO". Isi dengan URL JSON milikmu sendiri (skema ada
+# di README.md) untuk memakai data asli.
+apbd_data_url: ""
+
+nav:
+  - title: Dashboard
+    url: /
+  - title: APBD
+    url: /dashboards/apbd/
+  - title: Peta Ekonomi
+    url: /dashboards/pdrb/
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - vendor

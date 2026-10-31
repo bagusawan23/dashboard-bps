@@ -1,0 +1,15 @@
+- title: Peta Ekonomi 3D
+  slug: pdrb
+  url: /dashboards/pdrb/
+  status: Live · Animasi
+  source: BPS · PDRB 38 provinsi, 17 lapangan usaha, 2025
+  desc: Peta isometrik 3D tempat tinggi provinsi mengikuti PDRB. Klik provinsi untuk masuk ke diorama 17 sektor yang bergerak, dengan 5 lensa analisis.
+  tags: [Three.js, Isometrik, Animasi, 5 lensa]
+
+- title: Peta Belanja APBD
+  slug: apbd
+  url: /dashboards/apbd/
+  status: Live
+  source: Data realisasi APBD 2015–2024
+  desc: Jelajahi realisasi belanja pemerintah daerah dari tingkat nasional, provinsi, hingga kabupaten/kota. Ganti lensa peta, bandingkan antar wilayah, lalu ekspor tabelnya.
+  tags: [Choropleth, Drill-down, Perbandingan]

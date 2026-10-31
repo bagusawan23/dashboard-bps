@@ -1,0 +1,68 @@
+---
+layout: dashboard
+title: Peta Belanja APBD
+description: Realisasi belanja APBD provinsi dan kabupaten/kota 2015–2024, dengan peta drill-down dan perbandingan wilayah.
+permalink: /dashboards/apbd/
+script: /assets/js/apbd.js
+---
+<div class="dash" id="dash">
+  <div class="toolbar">
+    <div class="seg" id="scope" role="group" aria-label="Cakupan data"></div>
+    <label class="field">Wilayah <select id="wil"></select></label>
+    <label class="field">Bandingkan <select id="cmp"></select></label>
+    <span class="demo" id="demoBadge" hidden title="Angka pada tampilan ini sintetis, bukan data resmi.">Data demo</span>
+    <span class="spacer"></span>
+    <button class="btn" id="btnShare" type="button">Salin tautan</button>
+    <button class="btn" id="btnCsv" type="button">Unduh CSV</button>
+  </div>
+
+  <section class="kpis" id="kpis" aria-label="Ringkasan"></section>
+
+  <div class="grid">
+    <section class="panel map-panel" aria-labelledby="mapTitle">
+      <header class="panel-h">
+        <div>
+          <h2 id="mapTitle">Memuat peta…</h2>
+          <p class="sub" id="mapSub"></p>
+        </div>
+        <div class="lens" id="lens" role="group" aria-label="Lensa warna peta"></div>
+      </header>
+      <div class="mapwrap">
+        <svg id="map" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Peta Indonesia: klik provinsi untuk membuka, atau gunakan menu Wilayah.">
+          <g id="gProv"></g><g id="gKab"></g>
+        </svg>
+        <div class="loading" id="loading">Memuat data…</div>
+        <div class="drill" id="drill" hidden></div>
+        <div class="note" id="kkNote" hidden></div>
+      </div>
+      <div class="legend num" id="legend"></div>
+    </section>
+
+    <section class="panel side-panel">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Rincian">
+        <button role="tab" data-tab="rank" aria-selected="true">Peringkat</button>
+        <button role="tab" data-tab="fungsi" aria-selected="false">Fungsi</button>
+        <button role="tab" data-tab="jenis" aria-selected="false">Jenis belanja</button>
+      </div>
+      <div class="tab-body" id="tabBody"></div>
+    </section>
+  </div>
+
+  <div class="errbox" id="errBox" hidden>
+    <h2>Data tidak dapat dimuat</h2>
+    <p id="errDetail"></p>
+    <div class="err-actions">
+      <button class="btn primary" id="errRetry" type="button">Coba lagi</button>
+      <button class="btn" id="errDemo" type="button">Pakai data demo</button>
+    </div>
+  </div>
+</div>
+<div class="tip" id="tip" role="tooltip"></div>
+<script>
+  window.APBD_CONFIG = {
+    dataUrl: "{{ site.apbd_data_url }}",
+    demoUrl: "{{ '/assets/data/apbd-demo.json' | relative_url }}",
+    geoProv: "{{ '/assets/data/geo-provinsi.json' | relative_url }}",
+    geoKab: "{{ '/assets/data/geo-kabkota.json' | relative_url }}"
+  };
+</script>

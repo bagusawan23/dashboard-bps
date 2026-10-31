@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'id' }}">
+<head>
+{% include head.html %}
+</head>
+<body class="page">
+{% include nav.html %}
+<main class="container">
+{{ content }}
+</main>
+<footer class="footer">
+  <span>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
+  {% if site.github_username != "" %}<a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
+</footer>
+<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+</body>
+</html>
