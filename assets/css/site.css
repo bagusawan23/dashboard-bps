@@ -48,6 +48,21 @@ code { font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace; background: v
   border: 1px solid var(--line); background: var(--surface); color: var(--ink2);
 }
 .icon-btn:hover { color: var(--ink); border-color: var(--muted); }
+.palette { position: relative; }
+.pal-pop {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 168px; padding: 8px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+}
+.pal-pop[hidden] { display: none; }
+.pal-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 4px 8px 6px; }
+.pal-item {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px; border: 0; border-radius: 9px;
+  background: none; color: var(--ink2); font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; text-align: left;
+}
+.pal-item i { width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--line); }
+.pal-item:hover { background: var(--surface2); color: var(--ink); }
+.pal-item.on { color: var(--accent); background: var(--surface2); }
+.pal-item.on i { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--accent); }
 :root[data-theme="dark"] .i-sun, :root[data-theme="light"] .i-moon { display: none; }
 
 /* ---- Home ---- */

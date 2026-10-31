@@ -28,8 +28,8 @@ function readPal() {
     dark, ramp: [0, 1, 2, 3, 4, 5].map((i) => new THREE.Color(g('--b' + i))), css: [0, 1, 2, 3, 4, 5].map((i) => g('--b' + i)),
     nodata: new THREE.Color(g('--nodata')), accent: new THREE.Color(g('--accent')), accent2: new THREE.Color(g('--accent2')),
     neg: new THREE.Color(dark ? '#f0816b' : '#c2412b'), negCss: dark ? '#f0816b' : '#c2412b',
-    island: new THREE.Color(dark ? '#26394b' : '#d9e2ec'), plat: new THREE.Color(dark ? '#16202c' : '#ffffff'),
-    platSide: new THREE.Color(dark ? '#0f1822' : '#cfd8e3'), tile: new THREE.Color(dark ? '#1b2a39' : '#eef2f7')
+    island: new THREE.Color(g('--line')).multiplyScalar(dark ? 1.15 : .96), plat: new THREE.Color(g('--surface')),
+    platSide: new THREE.Color(g('--bg')).multiplyScalar(dark ? 1.3 : .82), tile: new THREE.Color(g('--surface2')).multiplyScalar(dark ? 1.1 : 1)
   };
 }
 readPal();
@@ -153,7 +153,7 @@ function renderLegendaPeta() {
 }
 function renderTerpilih() {
   const P = PR.filter((x) => x.p.nama === (S.hover || S.pilih))[0], el = $('terpilih');
-  if (!P) { el.innerHTML = '<p class="kecil">Arahkan kursor ke sebuah provinsi, lalu klik untuk membuka dioramanya.</p>'; return; }
+  if (!P) { el.innerHTML = '<p class="kecil">Arahkan kursor ke sebuah provinsi, lalu klik untuk langsung masuk ke dioramanya.</p>'; return; }
   const dom = P.u.sek.slice().sort((a, b) => b.v - a.v).slice(0, 3);
   el.innerHTML = '<div class="kepala"><h2>' + esc(P.p.nama) + '</h2><span class="kecil">peringkat ' + P.rank + ' dari ' + PR.length + '</span></div>' +
     '<div class="stat3"><div><span class="kecil">PDRB 2025</span><b class="num">' + tril(P.p.pdrb[KEY]) + '</b></div><div><span class="kecil">Tumbuh riil</span><b class="num ' + (P.g >= NAS ? 'up' : 'dn') + '">' + sgn(P.g) + '</b></div><div><span class="kecil">Porsi PDB</span><b class="num">' + pct(P.p.pdrb[KEY] / S.data.nasional.pdb[KEY] * 100) + '</b></div></div>' +
@@ -385,7 +385,7 @@ canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clie
 canvas.addEventListener('pointerup', (e) => {
   const was = drag; drag = null;
   if (!was || was.moved || S.fase === 'masuk' || S.fase === 'kembali') return;
-  if (S.fase === 'peta') { const h = cast(e, PR.filter((P) => P.mesh.visible).map((P) => P.mesh), false); if (h.length) { const P = PR[h[0].object.userData.i]; if (S.pilih === P.p.nama && e.detail >= 1) masuk(P.p.nama); else { S.pilih = P.p.nama; renderTerpilih(); } } }
+  if (S.fase === 'peta') { const h = cast(e, PR.filter((P) => P.mesh.visible).map((P) => P.mesh), false); if (h.length) { const P = PR[h[0].object.userData.i]; S.pilih = P.p.nama; masuk(P.p.nama); } }
   else if (S.fase === 'dio') { const h = cast(e, DIO.pick, true); const k = h.length ? kodeDari(h[0].object) : null; pilihSektor(k && k === S.sektor ? null : k); }
 });
 canvas.addEventListener('pointermove', (e) => {
