@@ -50,7 +50,7 @@ code { font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace; background: v
 .icon-btn:hover { color: var(--ink); border-color: var(--muted); }
 .palette { position: relative; }
 .pal-pop {
-  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 168px; padding: 8px;
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 208px; padding: 8px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
 }
 .pal-pop[hidden] { display: none; }
@@ -61,6 +61,13 @@ code { font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace; background: v
 }
 .pal-item i { width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--line); }
 .pal-item:hover { background: var(--surface2); color: var(--ink); }
+.pal-custom-sw { background: conic-gradient(#f44, #fc4, #4d6, #4cf, #84f, #f4a, #f44); }
+.pal-custom { display: grid; gap: 8px; padding: 8px 10px 4px; margin-top: 4px; border-top: 1px solid var(--line); }
+.pal-custom[hidden] { display: none; }
+.pal-custom label { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; font-weight: 600; color: var(--ink2); }
+.pal-custom input[type="color"] { width: 38px; height: 26px; padding: 0; border: 1px solid var(--line); border-radius: 7px; background: none; cursor: pointer; }
+.pal-reset { justify-self: start; padding: 4px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface2); color: var(--ink2); font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.pal-reset:hover { color: var(--ink); border-color: var(--muted); }
 .pal-item.on { color: var(--accent); background: var(--surface2); }
 .pal-item.on i { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--accent); }
 :root[data-theme="dark"] .i-sun, :root[data-theme="light"] .i-moon { display: none; }

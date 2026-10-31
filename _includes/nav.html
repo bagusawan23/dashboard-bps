@@ -17,6 +17,12 @@
       {% for p in site.data.palettes %}
       <button type="button" role="menuitemradio" aria-checked="false" class="pal-item" data-palette="{{ p.id }}"><i style="background: {{ p.sw }}"></i>{{ p.label }}</button>
       {% endfor %}
+      <button type="button" role="menuitemradio" aria-checked="false" class="pal-item" data-palette="kustom"><i class="pal-custom-sw"></i>Kustom…</button>
+      <div class="pal-custom" id="palCustom" hidden>
+        <label>Warna utama <input type="color" id="palC1" value="#4fd1c5"></label>
+        <label>Warna aksen <input type="color" id="palC2" value="#f6b73c"></label>
+        <button type="button" class="pal-reset" id="palReset">Atur ulang</button>
+      </div>
     </div>
   </div>
   <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema terang/gelap" title="Ganti tema">
