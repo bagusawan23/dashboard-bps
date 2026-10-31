@@ -12,6 +12,6 @@
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
   {% if site.github_username != "" %}<a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
 </footer>
-<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>

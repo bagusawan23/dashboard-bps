@@ -51,4 +51,4 @@ css: /assets/css/pdrb.css
   <p id="pesan" class="kecil pesan">Memuat data…</p>
 </div>
 <script>window.PDRB_CONFIG = { dataUrl: "{{ '/assets/data/pdrb.json' | relative_url }}" };</script>
-<script type="module" src="{{ '/assets/js/pdrb/main.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/js/pdrb/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

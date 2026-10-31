@@ -2,12 +2,12 @@
 <html lang="{{ site.lang | default: 'id' }}">
 <head>
 {% include head.html %}
-{% if page.css %}<link rel="stylesheet" href="{{ page.css | relative_url }}">{% else %}<link rel="stylesheet" href="{{ '/assets/css/dashboard.css' | relative_url }}">{% endif %}
+{% if page.css %}<link rel="stylesheet" href="{{ page.css | relative_url }}?v={{ site.time | date: '%s' }}">{% else %}<link rel="stylesheet" href="{{ '/assets/css/dashboard.css' | relative_url }}">{% endif %}
 </head>
 <body class="app-page">
 {% include nav.html %}
 {{ content }}
-<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
-{% if page.script %}<script src="{{ page.script | relative_url }}" defer></script>{% endif %}
+<script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% if page.script %}<script src="{{ page.script | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
 </body>
 </html>
